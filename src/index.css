@@ -11,11 +11,11 @@ html {
 #root {
   min-height: 100vh;
   min-width: 100vw;
+  background-color: aqua;
 }
 
 body {
   margin: 0;
-  /* font-size: 1.6rem; */
   background: #f8f8f9;
   overflow-x: hidden;
 }
@@ -32,4 +32,8 @@ body {
 .justify-content-center {
   align-items: center;
   justify-content: center;
+}
+
+.font-nunito {
+  font-family: "Nunito";
 }
