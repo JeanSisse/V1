@@ -10,15 +10,30 @@
 .header__options {
   list-style: none;
   gap: 15px;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 
   align-items: flex-end;
 }
 
 .header__options--li {
+  all: unset;
+  box-sizing: border-box;
+
+  text-transform: uppercase;
   cursor: pointer;
+  background-color: blue;
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: rgba(220, 220, 220, 0.878);
+
+  transition: transform 0.2s;
+
+  font-style: normal;
+  font-weight: 500;
 }
 
 .header__options--li:hover {
-  color: rgb(194, 160, 25);
+  color: rgb(255, 255, 255);
+  border: 0px solid rgb(255, 255, 255);
+  transform: scale(1.1);
 }
