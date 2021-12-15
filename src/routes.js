@@ -1,21 +1,21 @@
 import Home from "./Pages/Home";
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Routes
-// } from 'react-router-dom';
+import { GlobalProvider } from "./context/GlobalContext";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 
-function Routas() {
+function Routes() {
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path='/' element={Home} />
-    //   </Routes>
-    // </Router>
-    <>
-      <Home/>
-    </>
+   <Router>
+    <Switch>
+      <GlobalProvider>
+        <Route path={['/', '/home']} exact component={Home} />
+      </GlobalProvider>
+    </Switch>
+   </Router>
   );
 }
 
-export default Routas;
+export default Routes;
