@@ -37,3 +37,8 @@
   border: 0px solid rgb(255, 255, 255);
   transform: scale(1.1);
 }
+
+.contact-me {
+  border-radius: 28px;
+  transform: rotate(-4.88deg);
+}

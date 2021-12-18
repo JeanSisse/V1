@@ -7,7 +7,7 @@ export default function Header () {
       <ul className='header__options display-flex-row font-montserrat'>
         <li className='header__options--li'>Home</li>
         <li className='header__options--li'>Portfolio</li>
-        <li className='header__options--li'>Contato</li>
+        <li className='header__options--li contact-me'>Fala comigo</li>
       </ul>
     </div>
   );
