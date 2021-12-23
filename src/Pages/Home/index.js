@@ -2,6 +2,7 @@ import CardMessage from "../../components/CardMessage";
 import Header from '../../components/Header';
 import './styles.css';
 import useGlobal from "../../hooks/hooks-global/useGlobal";
+import dowArrowImg from '../../assets/down-arrows.svg';
 
 function ShowInfo(
   {
@@ -57,79 +58,22 @@ function ShowInfo(
 export default function Home() {
   const {
     about,
-    showAbout,
-    setShowAbout,
-    showSkills,
-    setShowSkills,
-    showExperience,
-    setShowExperience,
-    showProjects,
-    setShowProjects,
+    // showAbout,
+    // setShowAbout,
+    // showSkills,
+    // setShowSkills,
+    // showExperience,
+    // setShowExperience,
+    // showProjects,
+    // setShowProjects,
   } = useGlobal();
 
   return (
-    <div className="container">
+    <div className=''>
       <Header />
-      <main className='home display-flex-column justify-content-center'>
-        <ShowInfo
-          setShowAbout={setShowAbout}
-          setShowSkills={setShowSkills}
-          setShowExperience={setShowExperience}
-          setShowProjects={setShowProjects}
-          infoState='about'
-        >
-          Sobre
-        </ShowInfo>
-        { showAbout && 
-          <CardMessage>
-            {about}
-          </CardMessage>
-        }
-
-        <ShowInfo
-          setShowAbout={setShowAbout}
-          setShowSkills={setShowSkills}
-          setShowExperience={setShowExperience}
-          setShowProjects={setShowProjects}
-          infoState='habilities'
-        >
-          Habilidades
-        </ShowInfo>
-        { showSkills && 
-          <CardMessage>
-            {about}
-          </CardMessage>
-        }
-
-        <ShowInfo
-          setShowAbout={setShowAbout}
-          setShowSkills={setShowSkills}
-          setShowExperience={setShowExperience}
-          setShowProjects={setShowProjects}
-          infoState='experience'
-        >
-          Experiências
-        </ShowInfo>
-        { showExperience && 
-          <CardMessage>
-            {about}
-          </CardMessage>
-        }
-
-        <ShowInfo
-          setShowAbout={setShowAbout}
-          setShowSkills={setShowSkills}
-          setShowExperience={setShowExperience}
-          setShowProjects={setShowProjects}
-          infoState='projects'
-        >
-          Projetos
-        </ShowInfo>
-        { showProjects && 
-          <CardMessage>
-            {about}
-          </CardMessage>
-        }
+      
+      <main className=''>
+      
       </main>
     </div>
   )
