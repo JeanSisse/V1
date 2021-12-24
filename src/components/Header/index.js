@@ -34,12 +34,22 @@ export default function Header () {
 
         <div className="header__options">
           <ul className='display-flex-row justify-content-center'>
-            <li className='header__options--li' style={{transitionDelay: '0ms'}}>Sobre</li>
-            <li className='header__options--li' style={{transitionDelay: '100ms'}}>Habilidades</li>
-            <li className='header__options--li' style={{transitionDelay: '200ms'}}>Trabalhos</li>
+            <li className='unexpected-2 header__options--li' style={{transitionDelay: '0ms'}}>
+              <a href='#sobre'>Sobre</a>
+            </li>
+            <li className='unexpected-2 header__options--li' style={{transitionDelay: '100ms'}}>
+              <a href='#habilidades'>Habilidades</a>
+            </li>
+            <li className='unexpected-2 header__options--li' style={{transitionDelay: '200ms'}}>
+              <a href="#trabalhos">Trabalhos</a>
+            </li>
             {/* <li className='header__options--li' style={{transitionDelay: '0ms'}}>Laboratório</li> */}
-            <li className='header__options--li' style={{transitionDelay: '300ms'}}>Contato</li>
-            <li className='header__options--resume' style={{transitionDelay: '400ms'}}>Resumo</li>
+            <li className='unexpected-2 header__options--li' style={{transitionDelay: '300ms'}}>
+              <a href='#contatos'>Contato</a>
+            </li>
+            <li className='header__options--resume' style={{transitionDelay: '400ms'}}>
+              <a href='#contato' >Resumo</a>
+            </li>
           </ul>
         </div>
       </nav>
