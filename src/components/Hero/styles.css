@@ -65,7 +65,7 @@
     -webkit-text-stroke: 0vw var(--green);
     border-right: 2px solid var(--green);
     overflow: hidden;
-    animation: animate 6s linear infinite;
+    animation: animate 5s linear infinite;
   }
 
   @keyframes animate {
@@ -84,7 +84,7 @@
 
 .hero__styled h4 {
   color: var(--dark-slate);
-  margin-top: 5px;
+  margin-top: 8px;
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-family: var(--font-sans);
 }

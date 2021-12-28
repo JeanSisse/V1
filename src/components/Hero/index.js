@@ -10,7 +10,7 @@ const Hero = () => {
         <h2 datatext="Jean Pierre D'Almeida,">Jean Pierre D'Almeida,</h2>
       </div>
       <>
-        <h3>desenvolvedor web</h3>
+        <h3>sou desenvolvedor web.</h3>
       </>
       <>
         <h4>
