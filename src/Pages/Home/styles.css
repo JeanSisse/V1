@@ -1,1 +1,19 @@
+main {
+  padding: 0 150px;
+  width: 100%;
+  min-height: 100vh;
+}
 
+@media (max-width: 1080px) {
+  main {
+    padding: 0 100px;
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 762px) {
+  main {
+    padding: 0 50px;
+  }
+}

@@ -8,6 +8,19 @@
   color: var(--light-slate);
 }
 
+@media (max-width: 1080px) {
+  .networks {
+    left: 20px;
+    right: auto;
+  }
+}
+
+@media (max-width: 762px) {
+  .networks {
+    display: none;
+  }
+}
+
 .networks__list {
   display: flex;
   flex-direction: column;

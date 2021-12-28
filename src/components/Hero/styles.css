@@ -1,0 +1,90 @@
+.hero__styled {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.h1__dataText {
+  position: relative;
+}
+
+.hero__styled h1,
+.h2__styled h2,
+.hero__styled h3,
+.hero__styled h4,
+.hero__styled h5,
+.hero__styled h6 {
+  font-weight: 600;
+  color: var(--lightest-slate);
+  line-height: 1.1;
+}
+
+.hero__styled h1 {
+  font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+  color: var(--green);
+  font-family: var(--font-mono);
+  margin-top: 15px;
+  margin-bottom: 3rem;
+}
+
+.h2__styled h2,
+.hero__styled h3 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-family: var(--font-sans);
+}
+
+.h2__styled {
+  position: relative;
+  display: inline-block;
+}
+
+.h2__styled h2 {
+  color: var(--green);
+}
+
+.hero__styled h3 {
+  color: var(--slate);
+}
+
+@media (min-width: 430px) {
+  .h2__styled h2 {
+    color: var(--navy);
+    -webkit-text-stroke: 0.05rem var(--green);
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .h2__styled h2::before {
+    content: attr(datatext);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: var(--green);
+    -webkit-text-stroke: 0vw var(--green);
+    border-right: 2px solid var(--green);
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+  }
+
+  @keyframes animate {
+    0%,
+    10%,
+    100% {
+      width: 0;
+    }
+
+    70%,
+    90% {
+      width: 100%;
+    }
+  }
+}
+
+.hero__styled h4 {
+  color: var(--dark-slate);
+  margin-top: 5px;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-family: var(--font-sans);
+}
