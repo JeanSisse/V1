@@ -96,3 +96,8 @@ body {
 .font-ibarra-real {
   font-family: "Ibarra Real Nova";
 }
+
+button {
+  cursor: pointer;
+  border-radius: 0;
+}
