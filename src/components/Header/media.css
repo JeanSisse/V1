@@ -1,0 +1,27 @@
+@media (max-width: 1080px) {
+  .header {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 762px) {
+  .header {
+    padding: 0 25px;
+  }
+
+  .header__options {
+    display: none;
+  }
+
+  .header__hamburgerButton {
+    display: flex;
+  }
+
+  .header__closeMenuDropDown {
+    display: flex;
+  }
+
+  /* .header__options ul li:last-of-type {
+    margin-top: 20px;
+  } */
+}

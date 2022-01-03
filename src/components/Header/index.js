@@ -1,20 +1,52 @@
 import './style.css';
+import './media.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+const OptionsList = () => {
+  return(
+    <ul>
+      <li className='underlined header__options--li' style={{transitionDelay: '0ms'}}>
+        <a href='#sobre'>Sobre</a>
+      </li>
+      <li className='underlined header__options--li' style={{transitionDelay: '100ms'}}>
+        <a href='#habilidades'>Habilidades</a>
+      </li>
+      <li className='underlined header__options--li' style={{transitionDelay: '200ms'}}>
+        <a href="#trabalhos">Trabalhos</a>
+      </li>
+      <li className='underlined header__options--li' style={{transitionDelay: '300ms'}}>
+        <a href='#contatos'>Contato</a>
+      </li>
+      <li className='header__options--resume' style={{transitionDelay: '400ms'}}>
+        <a href='#contato' >Resumo</a>
+      </li>
+    </ul>
+  );
+}
+
 export default function Header () {
   const [closeIcon, setCloseIcon] = useState(false);
+  const [displayAsideMenu, setDisplayAsideMenu] = useState(false);
+  const [enableAsideMenu, setEnableAsideMenu] = useState(window.innerWidth <= 762);
 
   const handleSetCloseIcon = () => {
     setCloseIcon(!closeIcon);
+    setDisplayAsideMenu(!displayAsideMenu);
   }
 
   useEffect(() => {
     window.addEventListener('resize', () => {
       const currentScreenSize = window.innerWidth > 762;
-      if(currentScreenSize) return setCloseIcon(false);
+      if(currentScreenSize) {
+        setDisplayAsideMenu(false);
+        setCloseIcon(false);
+        setEnableAsideMenu(false);
+      } else {
+        setEnableAsideMenu(true);
+      }
     });
-  });
+  },[]);
 
   return (
     <header className='header display-flex-row justify-content-between'>
@@ -47,36 +79,31 @@ export default function Header () {
         </div>
 
         <div className="header__options">
-          <ul className='display-flex-row justify-content-center'>
-            <li className='underlined header__options--li' style={{transitionDelay: '0ms'}}>
-              <a href='#sobre'>Sobre</a>
-            </li>
-            <li className='underlined header__options--li' style={{transitionDelay: '100ms'}}>
-              <a href='#habilidades'>Habilidades</a>
-            </li>
-            <li className='underlined header__options--li' style={{transitionDelay: '200ms'}}>
-              <a href="#trabalhos">Trabalhos</a>
-            </li>
-            {/* <li className='header__options--li' style={{transitionDelay: '0ms'}}>Laboratório</li> */}
-            <li className='underlined header__options--li' style={{transitionDelay: '300ms'}}>
-              <a href='#contatos'>Contato</a>
-            </li>
-            <li className='header__options--resume' style={{transitionDelay: '400ms'}}>
-              <a href='#contato' >Resumo</a>
-            </li>
-          </ul>
+          <OptionsList />
         </div>
 
-        <button
-          className={closeIcon ? 'header__closeMenuDropDown' : 'header__hamburgerButton'}
-          aria-label='Menu'
-          onClick={handleSetCloseIcon}
-        >
-          <div className="ham-box">
-            <div className="ham-box-inner">
-            </div>
+        {enableAsideMenu && 
+          <div>
+            <button
+              className={closeIcon ? 'header__closeMenuDropDown' : 'header__hamburgerButton'}
+              aria-label='Menu'
+              onClick={handleSetCloseIcon}
+            >
+              <div className="ham-box">
+                <div className="ham-box-inner">
+                </div>
+              </div>
+            </button>
+            {
+              displayAsideMenu && 
+              <aside className='aside__style display-flex-column  justify-content-center'>
+                <nav className='navi__options display-flex-column  justify-content-center'>
+                  <OptionsList />
+                </nav>
+              </aside>
+            }
           </div>
-        </button>
+        }
       </nav>
     </header>
   );

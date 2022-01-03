@@ -78,6 +78,8 @@ body {
 .justify-content-center {
   align-items: center;
   justify-content: center;
+  -moz-box-pack: center;
+  -moz-box-align: center;
 }
 
 .justify-content-between {
