@@ -30,7 +30,10 @@ export default function Header () {
   const [displayAsideMenu, setDisplayAsideMenu] = useState(false);
   const [enableAsideMenu, setEnableAsideMenu] = useState(window.innerWidth <= 762);
 
+  const body = document.body;
+  
   const handleSetCloseIcon = () => {
+    body.classList.toggle('blur');
     setCloseIcon(!closeIcon);
     setDisplayAsideMenu(!displayAsideMenu);
   }
