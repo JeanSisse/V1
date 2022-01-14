@@ -51,7 +51,7 @@
 
 .aside__style {
   min-height: 55vh;
-  width: min(35vw, 400px);
+  width: min(75vw, 400px);
   background-color: var(--lightest-navy);
   box-shadow: -10px 0px 30px -15px var(--navy-shadow);
   position: fixed;

@@ -41,7 +41,9 @@ export default function Header () {
   useEffect(() => {
     window.addEventListener('resize', () => {
       const currentScreenSize = window.innerWidth > 762;
+      
       if(currentScreenSize) {
+        body.classList.remove('blur');
         setDisplayAsideMenu(false);
         setCloseIcon(false);
         setEnableAsideMenu(false);
@@ -49,7 +51,9 @@ export default function Header () {
         setEnableAsideMenu(true);
       }
     });
-  },[]);
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <header className='header display-flex-row justify-content-between'>
