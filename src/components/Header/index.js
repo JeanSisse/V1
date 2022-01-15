@@ -1,5 +1,4 @@
 import StyledHeader from'./style.js';
-import './media.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -56,9 +55,9 @@ export default function Header () {
   }, []);
 
   return (
-    <StyledHeader className='header display-flex-row justify-content-between'>
-      <nav className='header__nav display-flex-row justify-content-between'>
-        <div className="logo display-flex-row justify-content-center">
+    <StyledHeader>
+      <nav className='header__nav'>
+        <div className="logo">
           <Link className='link' to={'/'} tabIndex={-1}>
             <svg id="logo"
               xmlns="http://www.w3.org/2000/svg"

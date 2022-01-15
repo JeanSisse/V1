@@ -5,6 +5,8 @@ const StyledHeader = styled.header`
   height: var(--nav-height);
   padding: 0 50px;
 
+  ${({ theme }) => theme.mixs.flexCenter}
+
   position: sticky;
   top: 0;
   z-index: 12;
@@ -14,10 +16,18 @@ const StyledHeader = styled.header`
   
   transition: var(--transition);
 
+  @media (max-width: 1080px) {
+    padding: 0 40px;
+  }
+
+  @media (max-width: 762px) {
+    padding: 0 25px;
+  }
+
   .header__nav {
     width: 100%;
     font-family: var(--font-mono);
-    /* transition: var(--transition); */
+    ${({ theme }) => theme.mixs.flexBetween}
   }
   
   .link {
@@ -31,8 +41,7 @@ const StyledHeader = styled.header`
   }
   
   .logo {
-    -moz-box-pack: center;
-    -moz-box-align: center;
+    ${({ theme }) => theme.mixs.flexCenter}
   }
   
   .link svg {
@@ -65,6 +74,12 @@ const StyledHeader = styled.header`
   .navi__options ul li:last-of-type {
     margin-top: 25px;
   }
+
+  .header__options {
+    @media (max-width: 762px) {
+      display: none;
+    }
+  }
   
   .header__options ul,
   .navi__options ul {
@@ -92,8 +107,6 @@ const StyledHeader = styled.header`
     text-decoration-skip-ink: auto;
     position: relative;
   
-    -webkit-transition: var(--transition);
-    -moz-transition: var(--transition);
     transition: var(--transition);
   }
   
@@ -138,6 +151,10 @@ const StyledHeader = styled.header`
     margin-left: 15px;
     font-size: var(--fz-xs);
     padding: 1.2rem 1.6rem;
+
+    @media (max-width: 762px) {
+      padding: 1.5rem 3rem;
+    }
   }
   
   .header__options--resume a:hover,
@@ -169,9 +186,7 @@ const StyledHeader = styled.header`
   .header__hamburgerButton,
   .header__closeMenuDropDown {
     display: none;
-    -moz-box-pack: center;
     justify-content: center;
-    -moz-box-align: center;
     padding: 15px;
     position: relative;
     border: 0px none;
@@ -183,6 +198,10 @@ const StyledHeader = styled.header`
     z-index: 10;
     background-color: transparent;
     text-transform: none;
+
+    @media (max-width: 762px) {
+      display: flex;
+    }
   }
   
   .header__hamburgerButton .ham-box {
