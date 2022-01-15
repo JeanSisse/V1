@@ -59,6 +59,7 @@ const StyledHeader = styled.header`
   }
   
   .aside__style {
+    ${({ theme }) => theme.mixs.flexCenter}
     min-height: 55vh;
     width: min(75vw, 400px);
     background-color: var(--lightest-navy);

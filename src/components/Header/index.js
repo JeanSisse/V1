@@ -102,8 +102,8 @@ export default function Header () {
             </button>
             {
               displayAsideMenu && 
-              <aside className='aside__style display-flex-column  justify-content-center'>
-                <nav className='navi__options display-flex-column  justify-content-center'>
+              <aside className='aside__style'>
+                <nav className='navi__options'>
                   <OptionsList />
                 </nav>
               </aside>
