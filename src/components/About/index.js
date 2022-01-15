@@ -1,11 +1,8 @@
 import styled from "styled-components";
+import jpImg from '../../assets/jp-sisse.jpeg';
 
 const StyledAbaoutSection = styled.section`
-  max-width: 1000px;
-  color: var(--slate);
-  font-family: var(--font-sans);
-  font-size: var(--fz-xl);
-  line-height: 1.3;
+  max-width: 900px;
 
   .inner {
     display: grid;
@@ -22,17 +19,24 @@ const StyledText = styled.div`
   ul.skills-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(140px, 200px));
-    grid-gap: 0 10px;
+    gap: 0 10px;
     padding: 0;
     margin: 20px 0 0 0;
     overflow: hidden;
     list-style: none;
+
+    @media (max-width: 339px) {
+      display: flex;
+      flex-direction: column;
+    }
+
     li {
       position: relative;
       margin-bottom: 10px;
       padding-left: 20px;
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
+
       &:before {
         content: '▹';
         position: absolute;
@@ -45,43 +49,111 @@ const StyledText = styled.div`
   }
 `;
 
+const StyledPic = styled.div`
+  position: relative;
+  max-width: 300px;
+
+  @media (max-width: 768px) {
+    margin: 50px auto 0;
+    width: 70%;
+  }
+
+  .wrapper {
+    ${({ theme }) => theme.mixs.boxShadow};
+    display: bloc;
+    position: relative;
+    width: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--green);
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      outline: 0;
+
+      &:after {
+        top: 15px;
+        left: 15px;
+      }
+
+      .img {
+        filter: none;
+        mix-blend-mode: normal;
+      }
+    }
+
+    .img {
+      position: relative;
+      border-radius: var(--border-radius);
+      mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1);
+      transition: var(--transition);
+      vertical-align: middle;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    &:before {
+      top: 0;
+      left: 0;
+      background-color: var(--navy);
+      mix-blend-mode: screen;
+    }
+
+    &:after {
+      border: 2px solid var(--green);
+      top: 20px;
+      left: 20px;
+      z-index: -1;
+    }
+  }
+`;
+
 const About = () => {
+
+  const skills = ['JavaScript (ES6+)', 'React', 'Node.js', 'Express'];
   return(
     <StyledAbaoutSection id='about'>
       <h2 className='numbered-heading'>About Me</h2>
 
       <div className="inner">
         <StyledText>
-          <>
-            <p>Hello! My name is Brittany and I enjoy creating things that live on the internet. 
-              My interest in web development started back in 2012 when I decided to try editing custom 
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML &#38; CSS!
+          <div>
+            <p>
+              Olá, me chamo Jean Pierre - eu sou desenvolvedor full-stack que gosta de criar coisas que vivem na internet. 
+              Eu sempre tive paixão em me desafiar o que me levou a fazer curso de <b>Ciência da Computação</b> pela <a href="https://www.unb.br/">Universidade 
+              de Brasília</a> -  onde acabei 
+              apaixonando pela área de tecnologia e de criação de softwares.
             </p>
-            <p>Hello! My name is Brittany and I enjoy creating things that live on the internet. 
-              My interest in web development started back in 2012 when I decided to try editing custom 
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML &#38; CSS!
-            </p>
-            <p>Hello! My name is Brittany and I enjoy creating things that live on the internet. 
-              My interest in web development started back in 2012 when I decided to try editing custom 
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML &#38; CSS!
+            <p>
+              Também tive oportunidade de participar no curso intensivo oferecido pela <a href="https://cubos.academy/">Cubos Academy</a> em 
+              parceria com <a href="https://www.ifood.com.br/">iFood</a> onde aprendi muito sobre desenvolvimento web.
             </p>
 
             <p>
-              Here are a few technologies I&#39;ve been working with recently:
+              Seguem algumas tecnologias com os quais tenho trabalhado recentemente:
             </p>
-          </>
+          </div>
 
           <ul className="skills-list">
-            <li>JavaScript (ES6+)</li>
-            <li>React.js</li>
-            <li>Node.js</li>
-            <li>TypeScript</li>
-            <li>Express</li>
-            <li>TDD</li>
+            {skills && skills.map((skill, index) => <li key={index}>{skill}</li>)}
           </ul>
         </StyledText>
 
-        <div className="styledPic"></div>
+        <StyledPic>
+          <div className="wrapper">
+            <img className="img" src={jpImg} alt="Apresentação" />
+          </div>
+        </StyledPic>
 
       </div>
     </StyledAbaoutSection>
