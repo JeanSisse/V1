@@ -59,7 +59,7 @@ export default function Networks() {
           </a>
         </li>
         <li>
-          <a href='https://www.instagram.com/bchiang7' aria-label='Instagram' target="_blank" rel="noreferrer">
+          <a href='https://www.instagram.com/tavares1988' aria-label='Instagram' target="_blank" rel="noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg"
               role="img"
               viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ export default function Networks() {
           </a>
         </li>
         <li>
-        <a href="https://codepen.io/bchiang7" aria-label="Codepen" target="_blank" rel="noreferrer">
+        <a href="https://codepen.io/jeansisse" aria-label="Codepen" target="_blank" rel="noreferrer">
           <svg xmlns="http://www.w3.org/2000/svg"
             role="img"
             viewBox="0 0 24 24"
