@@ -25,14 +25,17 @@ const mixs = {
     position: relative;
     transition: var(--transition);
     color: var(--green);
+
     &:hover,
     &:focus,
     &:active {
       color: var(--green);
       outline: 0;
+
       &:after {
         width: 100%;
       }
+      
       & > * {
         color: var(--green) !important;
         transition: var(--transition);
