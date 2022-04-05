@@ -172,15 +172,15 @@ const StyledHeader = styled.header`
   
   .underlined {
     background: linear-gradient(currentColor 0 0) left var(--p, 50%) bottom 0 /
-        var(--d, 0) 3px no-repeat,
+        var(--d, 0) 1px no-repeat,
       linear-gradient(currentColor 0 0) right var(--p, 50%) bottom 0 / var(--d, 0)
-        3px no-repeat;
+        1px no-repeat;
     transition: 0.3s, background-position 0.3s 0.3s;
   }
   
   .underlined:hover {
-    --d: 50%;
-    --p: 50.1%;
+    --d: 81%;
+    --p: 50%;
     transition: cubic-bezier(0, 500, 1, 500) 0.3s, background-size 0.3s 0.3s;
   }
   
