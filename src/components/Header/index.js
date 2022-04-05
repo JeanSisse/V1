@@ -1,36 +1,36 @@
-import StyledHeader from'./style.js';
+import StyledHeader from './style.js';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const OptionsList = () => {
-  return(
+  return (
     <ul>
-      <li className='underlined header__options--li' style={{transitionDelay: '0ms'}}>
+      <li className='underlined header__options--li'>
         <a href='#sobre'>Sobre</a>
       </li>
-      <li className='underlined header__options--li' style={{transitionDelay: '100ms'}}>
+      <li className='underlined header__options--li'>
         <a href='#habilidades'>Habilidades</a>
       </li>
-      <li className='underlined header__options--li' style={{transitionDelay: '200ms'}}>
+      <li className='underlined header__options--li'>
         <a href="#trabalhos">Trabalhos</a>
       </li>
-      <li className='underlined header__options--li' style={{transitionDelay: '300ms'}}>
+      <li className='underlined header__options--li'>
         <a href='#contatos'>Contato</a>
       </li>
-      <li className='header__options--resume' style={{transitionDelay: '400ms'}}>
-        <a href='#contato' >Resumo</a>
+      <li className='header__options--resume'>
+        <a href='#resumo' >Resumo</a>
       </li>
     </ul>
   );
 }
 
-export default function Header () {
+export default function Header() {
   const [closeIcon, setCloseIcon] = useState(false);
   const [displayAsideMenu, setDisplayAsideMenu] = useState(false);
   const [enableAsideMenu, setEnableAsideMenu] = useState(window.innerWidth <= 762);
 
   const body = document.body;
-  
+
   const handleSetCloseIcon = () => {
     body.classList.toggle('blur');
     setCloseIcon(!closeIcon);
@@ -40,8 +40,8 @@ export default function Header () {
   useEffect(() => {
     window.addEventListener('resize', () => {
       const currentScreenSize = window.innerWidth > 762;
-      
-      if(currentScreenSize) {
+
+      if (currentScreenSize) {
         body.classList.remove('blur');
         setDisplayAsideMenu(false);
         setCloseIcon(false);
@@ -50,8 +50,8 @@ export default function Header () {
         setEnableAsideMenu(true);
       }
     });
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -88,7 +88,7 @@ export default function Header () {
           <OptionsList />
         </div>
 
-        {enableAsideMenu && 
+        {enableAsideMenu &&
           <div>
             <button
               className={closeIcon ? 'header__closeMenuDropDown' : 'header__hamburgerButton'}
@@ -101,7 +101,7 @@ export default function Header () {
               </div>
             </button>
             {
-              displayAsideMenu && 
+              displayAsideMenu &&
               <aside className='aside__style'>
                 <nav className='navi__options'>
                   <OptionsList />
