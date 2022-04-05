@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAbaoutSection = styled.section`
+const StyledAbaoutSection = styled.section`
   max-width: 900px;
 
   .inner {
@@ -116,3 +116,5 @@ export const StyledPic = styled.div`
     }
   }
 `;
+
+export default StyledAbaoutSection;

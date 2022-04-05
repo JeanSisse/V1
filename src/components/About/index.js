@@ -1,5 +1,5 @@
 import jpImg from '../../assets/jp-sisse.jpeg';
-import { StyledAbaoutSection, StyledPic, StyledText } from "./style";
+import StyledAbaoutSection, { StyledPic, StyledText } from "./style";
 
 const About = () => {
 
