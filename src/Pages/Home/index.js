@@ -6,6 +6,7 @@ import Networks from '../../components/Networks';
 import GlobalStyle from '../../styles/GlobalStyle';
 import theme from '../../styles/theme';
 import './styles.css';
+import Experience from '../../components/Experience';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -21,6 +22,7 @@ export default function Home() {
       <StyledMainContainer className='fillHeight' id='content'>
         <Hero />
         <About />
+        <Experience />
       </StyledMainContainer>
     </ThemeProvider>
   )

@@ -9,7 +9,7 @@ const OptionsList = () => {
         <a href='#sobre'>Sobre</a>
       </li>
       <li className='underlined header__options--li'>
-        <a href='#habilidades'>Habilidades</a>
+        <a href='#experiencia'>Experiência</a>
       </li>
       <li className='underlined header__options--li'>
         <a href="#trabalhos">Trabalhos</a>
