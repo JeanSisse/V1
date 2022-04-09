@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import StyledExperienceSection, {
   StyledButton,
-  StyledTabList
+  StyledHighlight, StyledTabList
 } from './styles';
 
 const Experience = () => {
@@ -17,17 +17,20 @@ const Experience = () => {
           {
             listaDeExperiencia &&
             listaDeExperiencia.map(
-              (job, index) =>
-                <StyledButton
-                  id={`tab-${index}`}
-                  isActive={activeTabId === index}
-                  onClick={() => setActiveTabId(index)}
-                >
-                  <span>{job}</span>
-                </StyledButton>
-
+              (job, index) => {
+                return (
+                  <StyledButton
+                    id={`tab-${index}`}
+                    isActive={activeTabId === index}
+                    onClick={() => setActiveTabId(index)}
+                  >
+                    <span>{job}</span>
+                  </StyledButton>
+                );
+              }
             )
           }
+          <StyledHighlight activeTabId={activeTabId} />
         </StyledTabList>
       </div>
     </StyledExperienceSection>
