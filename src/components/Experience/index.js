@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import StyledExperienceSection, {
   StyledButton,
-  StyledHighlight, StyledTabList, StyledTabPanels, StyledTabPanel
+  StyledHighlight, StyledTabList, StyledTabPanels
 } from './styles';
-import { CSSTransition } from 'react-transition-group';
-import fs from 'fs';
 
 const Experience = () => {
   const listaDeExperiencia = ['Upstatement', 'iFood', 'Cubos', 'Pixar', 'Lexar'];
