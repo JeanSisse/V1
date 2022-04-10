@@ -1,30 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import StyledExperienceSection, {
   StyledButton,
   StyledHighlight, StyledTabList, StyledTabPanels
 } from './styles';
+import fm from 'front-matter';
 
 const Experience = () => {
   const listaDeExperiencia = ['Upstatement', 'iFood', 'Cubos', 'Pixar', 'Lexar'];
   const [activeTabId, setActiveTabId] = useState(0);
+  const [content, setContent] = useState({ md: "" });
 
-  // useEffect(() => {
-  //   fs.readdir("../../../content/jobs", (err, files) => {
-  //     if (err) console.log(err);
-  //     else {
-  //       console.log("\nCurrent directory filenames:");
-  //       files.forEach(file => {
-  //         console.log(file);
-  //       })
-  //     }
-  //   })
-  // }, [activeTabId]);
+  function importAll(r) {
+    return r.keys().map(r);
+  }
 
-  // function importAll(r) {
-  //   return r.keys().map(r);
-  // }
+  const mds = importAll(require.context('../../content/jobs/', true, /\.\/[^/]+\/index\.md$/));
 
-  // const mds = importAll(require.context('../../content/jobs', false, /\.(md)$/));
+  useEffect(() => {
+    mds.forEach(obj => {
+      fetch(obj.default).then(res => res.text()).then(md => {
+        setContent(md);
+        console.log(fm(md).frontmatter);
+      });
+    });
+  }, []);
 
   // useEffect(() => {
   //   console.log(mds);
