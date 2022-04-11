@@ -103,7 +103,7 @@ export const StyledTabPanel = styled.div`
   padding: 10px 5px;
 
   ul {
-    ${({ theme }) => theme.mixins.fancyList};
+    ${({ theme }) => theme.mixs.fancyList};
   }
 
   h3 {

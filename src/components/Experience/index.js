@@ -1,14 +1,18 @@
+import fm from 'front-matter';
 import { useEffect, useState } from 'react';
 import StyledExperienceSection, {
   StyledButton,
-  StyledHighlight, StyledTabList, StyledTabPanels
+  StyledHighlight,
+  StyledTabList,
+  StyledTabPanels,
+  StyledTabPanel
 } from './styles';
-import fm from 'front-matter';
+import { CSSTransition } from 'react-transition-group';
 
 const Experience = () => {
   const listaDeExperiencia = ['Upstatement', 'iFood', 'Cubos', 'Pixar', 'Lexar'];
   const [activeTabId, setActiveTabId] = useState(0);
-  const [content, setContent] = useState({ md: "" });
+  const [content, setContent] = useState([]);
 
   function importAll(r) {
     return r.keys().map(r);
@@ -17,41 +21,28 @@ const Experience = () => {
   const mds = importAll(require.context('../../content/jobs/', true, /\.\/[^/]+\/index\.md$/));
 
   useEffect(() => {
+    let node = [];
     mds.forEach(obj => {
       fetch(obj.default).then(res => res.text()).then(md => {
-        setContent(md);
-        console.log(fm(md).frontmatter);
+        const { attributes, body } = fm(md);
+        node.push(
+          {
+            'frontmatter': {
+              "titulo": attributes.titulo,
+              "companhia": attributes.companhia,
+              "local": attributes.local,
+              "tempo": attributes.tempo,
+              "url": attributes.url
+            },
+            'html': body
+          }
+        );
+        setContent(node);
+        console.log(node);
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // useEffect(() => {
-  //   console.log(mds);
-  // }, [activeTabId]);
-
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     jobs: allMarkdownRemark(
-  //       filter: { fileAbsolutePath: { regex: "/jobs/" } }
-  //       sort: { fields: [frontmatter__data], order: DESC }
-  //     ) {
-  //       edges {
-  //         nodes {
-  //           frontmatter {
-  //             titulo
-  //             companhia
-  //             local
-  //             tempo
-  //             url
-  //           }
-  //           html
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-
-  // const jobsData = data.jobs.edges;
 
   return (
     <StyledExperienceSection id='experiencia'>
@@ -79,8 +70,8 @@ const Experience = () => {
           <StyledHighlight activeTabId={activeTabId} />
         </StyledTabList>
         <StyledTabPanels>
-          {/* {jobsData &&
-            jobsData.map(({ node }, index) => {
+          {content &&
+            content.map((node, index) => {
               const { frontmatter, html } = node;
               const { titulo, url, companhia, tempo } = frontmatter;
 
@@ -116,7 +107,7 @@ const Experience = () => {
                 </CSSTransition>
               )
             })
-          } */}
+          }
         </StyledTabPanels>
       </div>
     </StyledExperienceSection>
