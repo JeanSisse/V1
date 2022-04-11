@@ -11,7 +11,7 @@ const StyledExperienceSection = styled.section`
 
 export const StyledTabList = styled.div`
   position: relative;
-  widith: max-content;
+  width: max-content;
   padding: 0;
   margin: 0;
   list-style: none;

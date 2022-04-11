@@ -10,7 +10,6 @@ import StyledExperienceSection, {
 import { CSSTransition } from 'react-transition-group';
 
 const Experience = () => {
-  const listaDeExperiencia = ['Upstatement', 'iFood', 'Cubos', 'Pixar', 'Lexar'];
   const [activeTabId, setActiveTabId] = useState(0);
   const [content, setContent] = useState([]);
 
@@ -18,29 +17,42 @@ const Experience = () => {
     return r.keys().map(r);
   }
 
-  const mds = importAll(require.context('../../content/jobs/', true, /\.\/[^/]+\/index\.md$/));
+  async function fetcData(data) {
+    let obj = {};
+    await fetch(data.default).then(res => res.text()).then(md => {
+
+      const { attributes, body } = fm(md);
+      obj = {
+        'frontmatter': {
+          "titulo": attributes.titulo,
+          "companhia": attributes.companhia,
+          "local": attributes.local,
+          "tempo": attributes.tempo,
+          "url": attributes.url
+        },
+        'html': body
+      };
+    });
+    return obj;
+  }
+
+  async function createContent(arrayFiles) {
+    const node = [];
+    for (const obj of arrayFiles) {
+      node.push(await fetcData(obj));
+    };
+    setContent(node);
+    return;
+  }
+
+  async function importFilesMd() {
+    const mds = importAll(require.context('../../content/jobs/', true, /\.\/[^/]+\/index\.md$/));
+    await createContent(mds);
+    return;
+  }
 
   useEffect(() => {
-    let node = [];
-    mds.forEach(obj => {
-      fetch(obj.default).then(res => res.text()).then(md => {
-        const { attributes, body } = fm(md);
-        node.push(
-          {
-            'frontmatter': {
-              "titulo": attributes.titulo,
-              "companhia": attributes.companhia,
-              "local": attributes.local,
-              "tempo": attributes.tempo,
-              "url": attributes.url
-            },
-            'html': body
-          }
-        );
-        setContent(node);
-        console.log(node);
-      });
-    });
+    importFilesMd();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -51,9 +63,10 @@ const Experience = () => {
       <div className="inner">
         <StyledTabList>
           {
-            listaDeExperiencia &&
-            listaDeExperiencia.map(
-              (job, index) => {
+            content &&
+            content.map(
+              (node, index) => {
+                const { companhia } = node.frontmatter;
                 return (
                   <StyledButton
                     id={`tab-${index}`}
@@ -61,7 +74,7 @@ const Experience = () => {
                     isActive={activeTabId === index}
                     onClick={() => setActiveTabId(index)}
                   >
-                    <span>{job}</span>
+                    <span>{companhia}</span>
                   </StyledButton>
                 );
               }
@@ -69,6 +82,7 @@ const Experience = () => {
           }
           <StyledHighlight activeTabId={activeTabId} />
         </StyledTabList>
+
         <StyledTabPanels>
           {content &&
             content.map((node, index) => {
