@@ -11,7 +11,7 @@ const StyledExperienceSection = styled.section`
 
 export const StyledTabList = styled.div`
   position: relative;
-  widith: max-content;
+  width: max-content;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -103,7 +103,7 @@ export const StyledTabPanel = styled.div`
   padding: 10px 5px;
 
   ul {
-    ${({ theme }) => theme.mixins.fancyList};
+    ${({ theme }) => theme.mixs.fancyList};
   }
 
   h3 {

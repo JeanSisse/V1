@@ -1,8 +1,8 @@
 ---
-data: 'Atual'
-titulo: 'Software Engineer i9'
-companhia: 'iFood'
-local: 'Vila Yara, Osasco/SP'
+data: '14-06-2019'
+titulo: 'Software Engineer Jr.'
+companhia: 'Linear Clipping'
+local: 'JK - DF'
 tempo: 'Fevereiro - Atual'
 url: 'https://institucional.ifood.com.br/'
 ---

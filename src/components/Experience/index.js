@@ -1,58 +1,60 @@
-import { useState } from 'react';
+import fm from 'front-matter';
+import { useEffect, useState } from 'react';
 import StyledExperienceSection, {
   StyledButton,
-  StyledHighlight, StyledTabList, StyledTabPanels
+  StyledHighlight,
+  StyledTabList,
+  StyledTabPanels,
+  StyledTabPanel
 } from './styles';
+import { CSSTransition } from 'react-transition-group';
 
 const Experience = () => {
-  const listaDeExperiencia = ['Upstatement', 'iFood', 'Cubos', 'Pixar', 'Lexar'];
   const [activeTabId, setActiveTabId] = useState(0);
+  const [content, setContent] = useState([]);
 
-  // useEffect(() => {
-  //   fs.readdir("../../../content/jobs", (err, files) => {
-  //     if (err) console.log(err);
-  //     else {
-  //       console.log("\nCurrent directory filenames:");
-  //       files.forEach(file => {
-  //         console.log(file);
-  //       })
-  //     }
-  //   })
-  // }, [activeTabId]);
+  function importAll(r) {
+    return r.keys().map(r);
+  }
 
-  // function importAll(r) {
-  //   return r.keys().map(r);
-  // }
+  async function fetcData(data) {
+    let obj = {};
+    await fetch(data.default).then(res => res.text()).then(md => {
 
-  // const mds = importAll(require.context('../../content/jobs', false, /\.(md)$/));
+      const { attributes, body } = fm(md);
+      obj = {
+        'frontmatter': {
+          "titulo": attributes.titulo,
+          "companhia": attributes.companhia,
+          "local": attributes.local,
+          "tempo": attributes.tempo,
+          "url": attributes.url
+        },
+        'html': body
+      };
+    });
+    return obj;
+  }
 
-  // useEffect(() => {
-  //   console.log(mds);
-  // }, [activeTabId]);
+  async function createContent(arrayFiles) {
+    const node = [];
+    for (const obj of arrayFiles) {
+      node.push(await fetcData(obj));
+    };
+    setContent(node);
+    return;
+  }
 
-  // const data = useStaticQuery(graphql`
-  //   query {
-  //     jobs: allMarkdownRemark(
-  //       filter: { fileAbsolutePath: { regex: "/jobs/" } }
-  //       sort: { fields: [frontmatter__data], order: DESC }
-  //     ) {
-  //       edges {
-  //         nodes {
-  //           frontmatter {
-  //             titulo
-  //             companhia
-  //             local
-  //             tempo
-  //             url
-  //           }
-  //           html
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
+  async function importFilesMd() {
+    const mds = importAll(require.context('../../content/jobs/', true, /\.\/[^/]+\/index\.md$/));
+    await createContent(mds);
+    return;
+  }
 
-  // const jobsData = data.jobs.edges;
+  useEffect(() => {
+    importFilesMd();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StyledExperienceSection id='experiencia'>
@@ -61,9 +63,10 @@ const Experience = () => {
       <div className="inner">
         <StyledTabList>
           {
-            listaDeExperiencia &&
-            listaDeExperiencia.map(
-              (job, index) => {
+            content &&
+            content.map(
+              (node, index) => {
+                const { companhia } = node.frontmatter;
                 return (
                   <StyledButton
                     id={`tab-${index}`}
@@ -71,7 +74,7 @@ const Experience = () => {
                     isActive={activeTabId === index}
                     onClick={() => setActiveTabId(index)}
                   >
-                    <span>{job}</span>
+                    <span>{companhia}</span>
                   </StyledButton>
                 );
               }
@@ -79,9 +82,10 @@ const Experience = () => {
           }
           <StyledHighlight activeTabId={activeTabId} />
         </StyledTabList>
+
         <StyledTabPanels>
-          {/* {jobsData &&
-            jobsData.map(({ node }, index) => {
+          {content &&
+            content.map((node, index) => {
               const { frontmatter, html } = node;
               const { titulo, url, companhia, tempo } = frontmatter;
 
@@ -117,7 +121,7 @@ const Experience = () => {
                 </CSSTransition>
               )
             })
-          } */}
+          }
         </StyledTabPanels>
       </div>
     </StyledExperienceSection>
