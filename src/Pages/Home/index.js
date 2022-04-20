@@ -7,6 +7,7 @@ import GlobalStyle from '../../styles/GlobalStyle';
 import theme from '../../styles/theme';
 import './styles.css';
 import Experience from '../../components/Experience';
+import Projects from '../../components/Projects';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -23,6 +24,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <Projects />
       </StyledMainContainer>
     </ThemeProvider>
   )
