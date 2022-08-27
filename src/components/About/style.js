@@ -67,7 +67,7 @@ export const StyledPic = styled.div`
 
     &:hover,
     &:focus {
-      background: transparent;
+      // background: transparent;
       outline: 0;
 
       &:after {
