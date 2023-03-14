@@ -7,7 +7,7 @@ import GlobalStyle from '../../styles/GlobalStyle';
 import theme from '../../styles/theme';
 import './styles.css';
 import Experience from '../../components/Experience';
-import Jobs from '../../components/Jobs';
+// import Jobs from '../../components/Jobs';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
@@ -24,7 +24,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
-        <Jobs />
+        {/* <Jobs /> */}
       </StyledMainContainer>
     </ThemeProvider>
   )

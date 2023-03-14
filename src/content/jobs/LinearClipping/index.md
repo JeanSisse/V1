@@ -4,7 +4,7 @@ titulo: 'Software Engineer Jr.'
 companhia: 'Linear Clipping'
 local: 'JK - DF'
 tempo: 'Fevereiro - Atual'
-url: 'https://institucional.ifood.com.br/'
+url: ''
 ---
 
 - Developed and shipped highly interactive web applications for Apple Music using Ember.js
