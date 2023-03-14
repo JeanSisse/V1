@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 const variables = css`
   :root {
     --light-brown: #1d1d1d;
+    // --navy: #351330; --> talvez usar essa??
     --navy: #0a192f;
     --dark-navy: #020c1b;
     --light-navy: #112240;
