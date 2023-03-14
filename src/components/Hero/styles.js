@@ -7,7 +7,6 @@ const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixs.flexStart}
   flex-direction: column;
 
-  min-height: 100vh;
   padding: 0px;
 
   h1 {
